@@ -1,6 +1,6 @@
-status is-interactive; or exit 0
-
 function fzf_git_key_bindings
+    status --is-interactive; or return
+
     ## Widgets
     ## ~~~~~~~
     function git-branches-widget

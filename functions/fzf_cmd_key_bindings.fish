@@ -1,6 +1,6 @@
-status is-interactive; or exit 0
-
 function fzf_cmd_key_bindings
+    status is-interactive; or return
+
     ## Widgets
     ## ~~~~~~~
     function search-history-widget

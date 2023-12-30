@@ -1,3 +1,12 @@
+status --is-interactive; or exit 0
+
+## Initialize key bindings
+## ~~~~~~~~~~~~~~~~~~~~~~~
+fzf_cmd_key_bindings
+fzf_git_key_bindings
+
+## Configuration
+## ~~~~~~~~~~~~~
 # Widget popup width in percentage of the screen width
 set __fzf_popup_width 80
 
