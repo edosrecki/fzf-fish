@@ -1,15 +1,15 @@
 status is-interactive; or exit 0
 
 function fzf_git_key_bindings
-  ## Widgets
-  ## ~~~~~~~
-  function git-branches-widget
-    __git_check; or return
+    ## Widgets
+    ## ~~~~~~~
+    function git-branches-widget
+        __git_check; or return
 
-    # Default options
-    set -U __fzf_git_branches_all 0;
+        # Default options
+        set -U __fzf_git_branches_all 0
 
-    set -f branches (
+        set -f branches (
       echo |
       fzf-tmux \
         -p "$__fzf_popup_width%" \
@@ -28,16 +28,16 @@ function fzf_git_key_bindings
         string sub -s 3 | string split -f1 ' '
     )
 
-    if test $status -eq 0
-      commandline -i "$branches"
+        if test $status -eq 0
+            commandline -i "$branches"
+        end
+        commandline -f repaint
     end
-	  commandline -f repaint
-  end
 
-  function git-commits-widget
-    __git_check; or return
+    function git-commits-widget
+        __git_check; or return
 
-    set -f commits (
+        set -f commits (
       echo |
       fzf-tmux \
         -p "$__fzf_popup_width%" \
@@ -52,19 +52,19 @@ function fzf_git_key_bindings
         string split -f1 ' '
     )
 
-    if test $status -eq 0
-      for commit in $commits
-        set -fa commit_hashes (git rev-parse $commit)
-      end
-      commandline -i "$commit_hashes"
+        if test $status -eq 0
+            for commit in $commits
+                set -fa commit_hashes (git rev-parse $commit)
+            end
+            commandline -i "$commit_hashes"
+        end
+        commandline -f repaint
     end
-	  commandline -f repaint
-  end
 
-  function git-stashes-widget
-    __git_check; or return
+    function git-stashes-widget
+        __git_check; or return
 
-    set -f stashes (
+        set -f stashes (
       echo |
       fzf-tmux \
         -p "$__fzf_popup_width%" \
@@ -80,20 +80,20 @@ function fzf_git_key_bindings
         string split -f1 ' '
     )
 
-    if test $status -eq 0
-      commandline -i "$stashes"
+        if test $status -eq 0
+            commandline -i "$stashes"
+        end
+        commandline -f repaint
     end
-	  commandline -f repaint
-  end
 
-  function gh-prs-widget
-    __git_check; or return
+    function gh-prs-widget
+        __git_check; or return
 
-    # Default options
-    set -U __fzf_gh_prs_state_idx 1;
-    set -U __fzf_gh_prs_limit_idx 1;
+        # Default options
+        set -U __fzf_gh_prs_state_idx 1
+        set -U __fzf_gh_prs_limit_idx 1
 
-    set -f prs (
+        set -f prs (
       echo |
       fzf-tmux \
         -p "$__fzf_popup_width%" \
@@ -115,18 +115,18 @@ function fzf_git_key_bindings
         string match -gr '^#([0-9]+)'
     )
 
-    if test $status -eq 0
-      commandline -i "$prs"
+        if test $status -eq 0
+            commandline -i "$prs"
+        end
+        commandline -f repaint
     end
-	  commandline -f repaint
-  end
 
-  function gh-repos-widget
-    # Default options
-    set -U __fzf_gh_repos_org_idx 1;
-    set -U __fzf_gh_repos_limit_idx 1;
+    function gh-repos-widget
+        # Default options
+        set -U __fzf_gh_repos_org_idx 1
+        set -U __fzf_gh_repos_limit_idx 1
 
-    set -f repos (
+        set -f repos (
       echo |
       fzf-tmux \
         -p "$__fzf_popup_width%" \
@@ -149,23 +149,23 @@ function fzf_git_key_bindings
         string match -gr '^([^ ]+) +([^ ]+)' | string join '/'
     )
 
-    if test $status -eq 0
-      commandline -i "$repos"
+        if test $status -eq 0
+            commandline -i "$repos"
+        end
+        commandline -f repaint
     end
-    commandline -f repaint
-  end
 
-  ## Helpers
-  ## ~~~~~~~
-  function __git_check
-    command -q git; and git rev-parse HEAD >/dev/null 2>&1
-  end
+    ## Helpers
+    ## ~~~~~~~
+    function __git_check
+        command -q git; and git rev-parse HEAD >/dev/null 2>&1
+    end
 
-  ## Bindings
-  ## ~~~~~~~~
-  bind \cg\cb git-branches-widget
-  bind \cg\ct git-stashes-widget
-  bind \cg\cl git-commits-widget
-  bind \cg\cp gh-prs-widget
-  bind \cg\cr gh-repos-widget
+    ## Bindings
+    ## ~~~~~~~~
+    bind \cg\cb git-branches-widget
+    bind \cg\ct git-stashes-widget
+    bind \cg\cl git-commits-widget
+    bind \cg\cp gh-prs-widget
+    bind \cg\cr gh-repos-widget
 end

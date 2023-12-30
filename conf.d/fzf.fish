@@ -2,7 +2,7 @@
 set __fzf_popup_width 80
 
 # Array of PR states for GitHub PRs widget
-set __fzf_gh_prs_states 'open' 'all'
+set __fzf_gh_prs_states open all
 # Array of limits when fetching results for GitHub PRs widget
 set __fzf_gh_prs_limits 10 50 100 500 1000
 
