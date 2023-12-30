@@ -1,0 +1,24 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: macos-latest
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐟 Setup fish
+        uses: fish-actions/install-fish@v1.1.0
+
+      - name: 🔎 Format check
+        uses: fish-actions/format-check@v1
+
+      - name: 🔎 Syntax check
+        uses: fish-actions/syntax-check@v1
