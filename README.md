@@ -70,7 +70,7 @@ fisher install edosrecki/fzf-fish
 
 ## Configuration
 
-Check [`conf.d/fzf-widgets.fish`](conf.d/fzf-widgets.fish) for available options.
+Check [`conf.d/fzf_widgets.fish`](conf.d/fzf_widgets.fish) for available options.
 
 ## Recommendations
 
