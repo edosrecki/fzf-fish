@@ -46,12 +46,12 @@ function __fzf_gh_prs
 
     # Search PRs
     set -f prs (
-    gh pr list \
-      --state $__fzf_gh_prs_states[$__fzf_gh_prs_state_idx] \
-      --limit $__fzf_gh_prs_limits[$__fzf_gh_prs_limit_idx] \
-      --json 'number,title,author,createdAt,state' \
-      --template '{{ range . }}{{ printf "#%v\t" .number }}{{ printf "%.80s\t" .title }}{{ printf "%s\t" .author.login }}{{ printf "%s\t" (timeago .createdAt) }}{{ printf "%s\t" .state }}{{ printf "\n" }}{{ end }}'
-  )
+        gh pr list \
+            --state $__fzf_gh_prs_states[$__fzf_gh_prs_state_idx] \
+            --limit $__fzf_gh_prs_limits[$__fzf_gh_prs_limit_idx] \
+            --json 'number,title,author,createdAt,state' \
+            --template '{{ range . }}{{ printf "#%v\t" .number }}{{ printf "%.80s\t" .title }}{{ printf "%s\t" .author.login }}{{ printf "%s\t" (timeago .createdAt) }}{{ printf "%s\t" .state }}{{ printf "\n" }}{{ end }}'
+    )
 
     # Format results
     set -fa result (set_color --bold white)'Number'\t(set_color white)'Title'\t(set_color white)'Author'\t(set_color white)'Created'(set_color normal)

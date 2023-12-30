@@ -47,18 +47,18 @@ function __fzf_gh_repos
     # Search repositories
     set -f query $argv[1]
 
-    if test $__fzf_gh_repos_orgs[$__fzf_gh_repos_org_idx] != 'ᴀʟʟ'
+    if test $__fzf_gh_repos_orgs[$__fzf_gh_repos_org_idx] != ''
         set -f owner --owner $__fzf_gh_repos_orgs[$__fzf_gh_repos_org_idx]
     end
 
     set -f repos (
-    gh search repos $query \
-      $owner \
-      --limit $__fzf_gh_repos_limits[$__fzf_gh_repos_limit_idx] \
-      --match 'name' \
-      --json 'owner,name,visibility,pushedAt' \
-      --template '{{ range . }}{{ printf "%s\t" .owner.login }}{{ printf "%.50s\t" .name }}{{ printf "%s\t" .visibility }}{{ printf "%s\t" (timeago .pushedAt) }}{{ printf "\n" }}{{ end }}'
-  )
+        gh search repos $query \
+            $owner \
+            --limit $__fzf_gh_repos_limits[$__fzf_gh_repos_limit_idx] \
+            --match 'name' \
+            --json 'owner,name,visibility,pushedAt' \
+            --template '{{ range . }}{{ printf "%s\t" .owner.login }}{{ printf "%.50s\t" .name }}{{ printf "%s\t" .visibility }}{{ printf "%s\t" (timeago .pushedAt) }}{{ printf "\n" }}{{ end }}'
+    )
 
     # Format results
     set -fa result (set_color --bold white)'Owner'\t'Name'\t(set_color white)'Visibility'\t(set_color white)'Updated'(set_color normal)

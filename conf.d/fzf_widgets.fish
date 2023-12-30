@@ -7,7 +7,8 @@ set __fzf_gh_prs_states open all
 set __fzf_gh_prs_limits 10 50 100 500 1000
 
 # Array of organizations/users for GitHub repos widget
-set __fzf_gh_repos_orgs 'ᴀʟʟ'
+# Empty string ('') has a special meaning - repos for all organizations/users will be fetched
+set __fzf_gh_repos_orgs ''
 # Array of limits when fetching results for GitHub repos widget
 set __fzf_gh_repos_limits 10 50 100 500 1000
 
