@@ -1,12 +1,5 @@
-status --is-interactive; or exit 0
-
-## Initialize key bindings
-## ~~~~~~~~~~~~~~~~~~~~~~~
-fzf_cmd_key_bindings
-fzf_git_key_bindings
-
-## Configuration
-## ~~~~~~~~~~~~~
+## Defaults
+## ~~~~~~~~
 # Widget popup width in percentage of the screen width
 set __fzf_popup_width 80
 
@@ -23,3 +16,8 @@ set __fzf_gh_repos_limits 10 50 100 500 1000
 
 # Optional
 # set __fzf_column_cmd '/opt/homebrew/opt/util-linux/bin/column -m -c (__fzf_popup_columns) -t -s\t'
+
+## Key bindings
+## ~~~~~~~~~~~~
+fzf_cmd_key_bindings
+fzf_git_key_bindings
