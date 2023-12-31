@@ -27,19 +27,23 @@ function __fzf_git_branch
     switch $action
         # Parse output from __fzf_git_branches and return branch name and remote name
         case parse
-            set -f prefix (string sub -l 1 $branch)
-            set -f full_name (echo $branch | string sub -s 3 | string split -f1 ' ')
             set -f regex '^('(git remote | string join '|')')/'
 
-            # If it is a remote branch
-            set -f name $full_name
+            set -f prefix (string sub -l 1 $branch)
+            set -f arr (echo $branch | string sub -s 3 | string match -gr '^([^ ]+) +([^ ]+)')
+            set -f full_name $arr[1]
+            set -f upstream $arr[2]
+
+            set -f short_name $full_name
             if test $prefix = ''
-                set -f remote (string match -gr $regex $full_name)
-                set name (string replace -r $regex '' $name)
+                # If it is a remote branch remove the remote prefix
+                set -f short_name (string replace -r $regex '' $full_name)
             end
 
+            set -f remote (string match -rg $regex $upstream)
+
             echo $full_name
-            echo $name
+            echo $short_name
             echo $remote
             # Checkout a branch locally
         case checkout

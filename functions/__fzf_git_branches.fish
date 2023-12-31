@@ -36,16 +36,17 @@ function __fzf_git_branches
     --sort=-committerdate \
     --sort=-HEAD \
     --color=always \
-    --format='%(HEAD)'\t'%(refname:short)'\t'%(committerdate:relative)')
+    --format='%(HEAD)'\t'%(refname:short)'\t'%(upstream:short)'\t'%(committerdate:relative)')
 
     # Format results
-    set -fa result (set_color --bold white)'  Name'\t(set_color white)'Updated'(set_color normal)
+    set -fa result (set_color --bold white)'  Name'\t(set_color white)'Upstream'\t'Updated'(set_color normal)
     for branch in $branches
         set -f regex '^'(git remote | string join '|')
         set -f arr (string split \t $branch)
         set -f head $arr[1]
         set -f name $arr[2]
-        set -f date $arr[3]
+        set -f upstream $arr[3]
+        set -f date $arr[4]
 
         if test $head = '*'
             set -f prefix ''
@@ -55,7 +56,11 @@ function __fzf_git_branches
             set -f prefix ' '
         end
 
-        set -a result $prefix" $name"\t(set_color blue)$date(set_color normal)
+        if test $upstream = ""
+            set -f upstream $name
+        end
+
+        set -a result $prefix" $name"\t(set_color blue)$upstream\t$date(set_color normal)
     end
 
     printf "%s\n" $result | __fzf_column
