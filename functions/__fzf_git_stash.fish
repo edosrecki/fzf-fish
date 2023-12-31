@@ -39,7 +39,7 @@ function __fzf_git_stash
         case view
             set -l id (__fzf_git_stash --action parse $stash)
 
-            git stash show --patch --stat --color=always "$id" | __fzf_delta
+            git stash show --include-untracked --patch --stat --color=always "$id" | __fzf_delta
         case '*'
             usage
             return 1
