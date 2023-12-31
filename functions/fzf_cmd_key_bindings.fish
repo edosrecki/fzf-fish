@@ -32,7 +32,7 @@ function fzf_cmd_key_bindings
                 --preview="string replace -r '$time_prefix_regex' '' -- {} | fish_indent --ansi" \
                 --preview-window="bottom:3:wrap" |
             string split0 |
-            string replace -r $time_prefix_regex '' |
+            string replace -r $time_prefix_regex ''
         )
 
         if test $status -eq 0
