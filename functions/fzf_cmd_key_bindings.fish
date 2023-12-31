@@ -43,5 +43,7 @@ function fzf_cmd_key_bindings
 
     ## Bindings
     ## ~~~~~~~~
-    bind \cr search-history-widget
+    for mode in default insert
+        bind --mode $mode \cr search-history-widget
+    end
 end

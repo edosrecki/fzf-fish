@@ -163,9 +163,11 @@ function fzf_git_key_bindings
 
     ## Bindings
     ## ~~~~~~~~
-    bind \cg\cb git-branches-widget
-    bind \cg\ct git-stashes-widget
-    bind \cg\cl git-commits-widget
-    bind \cg\cp gh-prs-widget
-    bind \cg\cr gh-repos-widget
+    for mode in default insert
+        bind --mode $mode \cg\cb git-branches-widget
+        bind --mode $mode \cg\ct git-stashes-widget
+        bind --mode $mode \cg\cl git-commits-widget
+        bind --mode $mode \cg\cp gh-prs-widget
+        bind --mode $mode \cg\cr gh-repos-widget
+    end
 end
