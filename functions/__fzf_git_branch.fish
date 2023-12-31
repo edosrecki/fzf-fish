@@ -57,8 +57,8 @@ function __fzf_git_branch
             end
             set -f url (git remote get-url $remote)
 
+            set -f url (string replace -r '\.git$' '' $url)
             if string match -rq '^git@' $url
-                set -f url (string replace -r '\.git$' '' $url)
                 set -f url (string replace -r ':' '/' $url)
                 set -f url (string replace -r '^git@' 'https://' $url)
             end
