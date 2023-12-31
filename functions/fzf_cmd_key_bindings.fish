@@ -1,5 +1,5 @@
 function fzf_cmd_key_bindings
-    status is-interactive; or return
+    status --is-interactive; or return
 
     ## Widgets
     ## ~~~~~~~
