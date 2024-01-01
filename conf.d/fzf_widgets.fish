@@ -1,7 +1,7 @@
 ## Defaults
 ## ~~~~~~~~
 # Widget popup width in percentage of the screen width
-set __fzf_popup_width 80
+set __fzf_popup_width 90
 
 # Array of PR states for GitHub PRs widget
 set __fzf_gh_prs_states open all
