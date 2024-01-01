@@ -23,6 +23,7 @@ function __fzf_git_branches
 
     # Toggle local/all branches
     if set -q _flag_toggle_all
+        set -q __fzf_git_branches_all; or set -U __fzf_git_branches_all 0
         set -U __fzf_git_branches_all (math "bitxor($__fzf_git_branches_all, 1)")
     end
 
@@ -57,7 +58,7 @@ function __fzf_git_branches
         end
 
         if test $upstream = ""
-            set -f upstream $name
+            set -f upstream '-'
         end
 
         set -a result $prefix" $name"\t(set_color blue)$upstream\t$date(set_color normal)

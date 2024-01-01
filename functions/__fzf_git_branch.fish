@@ -36,11 +36,12 @@ function __fzf_git_branch
 
             set -f short_name $full_name
             if test $prefix = ''
+                set -f remote (string match -rg $regex $full_name)
                 # If it is a remote branch remove the remote prefix
                 set -f short_name (string replace -r $regex '' $full_name)
+            else
+                set -f remote (string match -rg $regex $upstream)
             end
-
-            set -f remote (string match -rg $regex $upstream)
 
             echo $full_name
             echo $short_name
