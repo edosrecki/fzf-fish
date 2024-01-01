@@ -58,7 +58,7 @@ function __fzf_git_branches
         end
 
         if test $upstream = ""
-            set -f upstream '-'
+            set -f upstream -
         end
 
         set -a result $prefix" $name"\t(set_color blue)$upstream\t$date(set_color normal)
