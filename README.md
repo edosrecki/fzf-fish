@@ -9,6 +9,7 @@ Keyboard bindings and widgets for `fish` shell using `fzf`.
 - **Key binding:** <kbd>Ctrl</kbd>+<kbd>G</kbd> <kbd>Ctrl</kbd>+<kbd>B</kbd>
 - **Mnemonic:** **G**it **B**ranches
 - **Options:**
+  - Show **h**elp: <kbd>Ctrl</kbd>+<kbd>H</kbd>
   - Toggle between local/**a**ll branches: <kbd>Ctrl</kbd>+<kbd>A</kbd>
   - Check**o**ut branch: <kbd>Ctrl</kbd>+<kbd>O</kbd>
   - **B**rowse branch in GitHub: <kbd>Ctrl</kbd>+<kbd>B</kbd>
@@ -43,6 +44,7 @@ Keyboard bindings and widgets for `fish` shell using `fzf`.
 - **Key binding:** <kbd>Ctrl</kbd>+<kbd>G</kbd> <kbd>Ctrl</kbd>+<kbd>P</kbd>
 - **Mnemonic:** **G**itHub **P**ull requests
 - **Options:**
+  - Show **h**elp: <kbd>Ctrl</kbd>+<kbd>H</kbd>
   - Switch through PR s**t**ates: <kbd>Ctrl</kbd>+<kbd>T</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd><kbd>T</kbd>
   - Switch through result **l**limits: <kbd>Ctrl</kbd>+<kbd>L</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd><kbd>L</kbd>
   - Select/deselect PR: <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd>
@@ -55,6 +57,7 @@ Keyboard bindings and widgets for `fish` shell using `fzf`.
 - **Key binding:** <kbd>Ctrl</kbd>+<kbd>G</kbd> <kbd>Ctrl</kbd>+<kbd>R</kbd>
 - **Mnemonic:** **G**itHub **R**epositories
 - **Options:**
+  - Show **h**elp: <kbd>Ctrl</kbd>+<kbd>H</kbd>
   - Switch through repository or**g**anizations: <kbd>Ctrl</kbd>+<kbd>G</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd><kbd>G</kbd>
   - Switch through result **l**limits: <kbd>Ctrl</kbd>+<kbd>L</kbd> / <kbd>Ctrl</kbd>+<kbd>Alt</kbd><kbd>L</kbd>
   - Select/deselect repo: <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd>

@@ -8,6 +8,7 @@ function fzf_git_key_bindings
 
         # Default options
         set -U __fzf_git_branches_all 0
+        set -U __fzf_git_branches_help 0
 
         set -f branches (
             echo |
@@ -23,6 +24,7 @@ function fzf_git_key_bindings
                 --bind='ctrl-a:reload(__fzf_git_branches --toggle-all)' \
                 --bind='ctrl-b:execute-silent(__fzf_git_branch --action browse {})' \
                 --bind='ctrl-o:execute-silent(__fzf_git_branch --action checkout {})+reload(__fzf_git_branches)' \
+                --bind='ctrl-h:transform-header(__fzf_git_branches_header --toggle-help)' \
                 --preview-window='down,border-top,50%' \
                 --preview='__fzf_git_branch --action view {}' |
                 string sub -s 3 | string split -f1 ' '
@@ -92,6 +94,7 @@ function fzf_git_key_bindings
         # Default options
         set -U __fzf_gh_prs_state_idx 1
         set -U __fzf_gh_prs_limit_idx 1
+        set -U __fzf_gh_prs_help 0
 
         set -f prs (
             echo |
@@ -110,6 +113,7 @@ function fzf_git_key_bindings
                 --bind='ctrl-alt-l:reload(__fzf_gh_prs --prev-limit)' \
                 --bind='ctrl-b:execute-silent(__fzf_gh_pr --action browse {})' \
                 --bind='ctrl-o:execute-silent(__fzf_gh_pr --action checkout {})' \
+                --bind='ctrl-h:transform-header(__fzf_gh_prs_header --toggle-help)' \
                 --preview-window='down,border-top,50%' \
                 --preview='__fzf_gh_pr --action view {}' |
                 string match -gr '^#([0-9]+)'
@@ -125,6 +129,7 @@ function fzf_git_key_bindings
         # Default options
         set -U __fzf_gh_repos_org_idx 1
         set -U __fzf_gh_repos_limit_idx 1
+        set -U __fzf_gh_repos_help 0
 
         set -f repos (
             echo |
@@ -144,6 +149,7 @@ function fzf_git_key_bindings
                 --bind="ctrl-alt-l:reload(__fzf_gh_repos --prev-limit {q})" \
                 --bind='ctrl-b:execute-silent(__fzf_gh_repo --action browse {})' \
                 --bind='ctrl-o:execute-silent(__fzf_gh_repo --action clone {})' \
+                --bind='ctrl-h:transform-header(__fzf_gh_repos_header --toggle-help)' \
                 --preview-window='down,border-top,50%' \
                 --preview='__fzf_gh_repo --action view {}' |
                 string match -gr '^([^ ]+) +([^ ]+)' | string join '/'
